@@ -34,7 +34,7 @@ var kr1DB = DB.create(__dirname+"/kr1.db");
 //   id: 3, 
 //   type: 'section3', 
 //   name: 'section3', 
-//   img: 'image/1/IMG_8478.jpg', 
+//   img: 'image/1/IMG_8478.JPG', 
 //   text: '2024.06.29' 
 // });
 //kr1DB.insert({ 
@@ -72,7 +72,7 @@ server.get("/img", (req, res)=>{
     var Services=[
         {"id":1,"type":"section1","name":"section1","img":"image/1/IMG_0921.jpg","text":"2024.06.29","_id":"UBI9JsKj5UVxO72i"},
         {"id":2,"type":"section2","name":"section2","img":"image/2/IMG_7936.JPG","text":"2024.06.29","_id":"Aa8pdHXSOhIZWvGR"},
-        {"id":3,"type":"section3","name":"section3","img":"image/1/IMG_8478.jpg","text":"2024.06.29","_id":"2LOs5Pxrngk0zY8x"},
+        {"id":3,"type":"section3","name":"section3","img":"image/1/IMG_8478.JPG","text":"2024.06.29","_id":"2LOs5Pxrngk0zY8x"},
         {"id":4,"type":"section4","name":"section4","img":"image/1/IMG_4529.jpg","text":"2024.06.29","_id":"9tC0ej0U2MoLSr5M"},
         {"id":5,"type":"section5","name":"section5","img":"image/1/IMG_4910.jpg","text":"2024.06.29","_id":"a2syELUvwm3HTun9"},
         {"id":6,"type":"section6","name":"section6","img":"image/1/IMG_5206.jpg","text":"2024.06.29","_id":"0zpGPVWVPq6pNsWI"},
