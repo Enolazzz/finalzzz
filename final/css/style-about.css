@@ -1,0 +1,199 @@
+*{
+    margin: 0; /* 設定所有元素的外邊距為 0 */
+    padding: 0; /* 設定所有元素的內邊距為 0 */
+    box-sizing: border-box; /* 設定盒模型的計算方式為 border-box */
+}
+
+body {
+        flex-wrap: wrap; /* 允許子元素換行 */
+        height: 100%;
+        width: 100%;
+}
+
+/* logo */
+h1{
+    position: absolute; /* 絕對定位 */
+    text-indent: 50px; /* 文字縮排 */
+    left: 50px; /* 左邊距 */
+    top: 60px; /* 上邊距 */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), /* 文字陰影 */
+                     0 0 20px rgba(255, 255, 255, 0.6),
+                     0 0 30px rgba(255, 255, 255, 0.4);
+    animation: flicker 3.1s infinite; /* 閃爍動畫 */
+}
+
+/* logo閃電效果 */
+@keyframes flicker {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), /* 設定文字陰影 */
+                     0 0 20px rgba(255, 255, 255, 0.6),
+                     0 0 30px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(255, 255, 255, 1), /* 增強陰影 */
+                     0 0 60px rgba(255, 255, 255, 0.8),
+                     0 0 80px rgba(255, 255, 255, 0.6);
+    }
+}
+
+@keyframes lightning-strike {
+    0%, 100% {
+        opacity: 0; /* 初始和結束時透明 */
+    }
+    50% {
+        opacity: 0.8; /* 中間時不透明 */
+    }
+}
+
+/* 導覽列 */
+header {
+    position: relative; /* 相對定位 */
+    height: 200px;
+    width: 100%;
+    background-image: url(/image/bbg.jpg); /* 背景圖片 */
+    background-attachment: fixed; /* 固定背景 */
+    background-size: 100% 100%; /* 背景圖片填滿容器 */
+    background-color: rgba(0, 0, 0, .6); /* 設定黑色遮罩 */
+    background-blend-mode: multiply; /* 設定背景混合模式 */
+    color: white; /* 字體顏色 */
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+ul {
+    position:relative;
+    font-size: 14px;
+    color: white; /* 字體顏色 */
+}
+
+ul li {
+    color: #fff;
+    display: inline; /* 列表項行內顯示 */
+    margin-right: 3vw; /* 右邊距 */
+}
+
+ul li a {
+    color: white !important; /* 連結顏色 */
+    position: relative; /* 底線動畫相對定位 */
+    transition: color 0.3s; /* 顏色過渡效果 */
+    text-decoration-line: none; /* 無下劃線 */
+}
+
+ul li a:hover {
+    color: #c89b3c; /* 鼠標放在列表上時改變文字顏色 */
+    text-decoration-line: none;
+}
+
+/* 滑動底線效果 */
+ul li a::after {
+    position: absolute; /* 絕對定位 */
+    content: ''; /* 內容為空 */
+    left: 0; 
+    bottom: 0; 
+    width: 0; /* 底線寬度 */
+    height: 2px; /* 底線高度 */
+    background-color: wheat; /* 底線顏色 */
+    transition: width 0.3s ease-in-out; /* 底線過渡效果 */
+}
+
+ul li a:hover::after {
+    width: 100%; /* 鼠標放置時底線從左到右展開 */
+}
+
+
+
+main{
+    background-image: url(/image/bbg.jpg); /* 設定背景圖片 */
+    background-attachment: fixed; /* 固定背景 */
+    background-size: 100% 100%; /* 背景圖片填滿容器 */
+    background-color: rgba(0, 0, 0, .6); /* 設定黑色遮罩 */
+    background-blend-mode: multiply; /* 設定背景混合模式 */
+    
+    align-items: center;
+    justify-items: center;
+}
+
+/* 頭貼 */
+:root {
+    background-image: url(/image/bbg.jpg);
+    background-attachment: fixed; /* 固定背景 */
+    background-size: 100% 100%; /* 背景圖片填滿 */
+    background-color: rgba(0, 0, 0, .6); /* 黑色遮罩 */
+    background-blend-mode: multiply; /* 背景混合模式 */
+
+    /* 圖片大小 */
+    --s: 280px;
+    /* 邊框大小 */
+    --b: 5px;
+    /* 邊框顏色 */
+    --c: #6692cf3a;
+    /* 背景顏色 */
+    --bg: #e2eedf;
+    /* 初始縮放比例 */
+    --f: 1;
+  }
+
+  img {
+     box-sizing: content-box; /* 設定盒子模型為 content-box，讓padding不影響寬度 */
+     width: var(--s); /* 設定圖片寬度為變數 --s 的值 */
+     aspect-ratio: 1; /* 設定圖片的寬高比為 1:1，保持正方形 */
+     object-fit: contain; /* 使圖片在容器內保持比例，並且完整顯示 */
+     padding-top: calc(var(--s) / 5); /* 計算上內邊距為 --s 的五分之一 */
+     cursor: pointer; /* 當滑鼠懸停時，顯示為可點擊的手型光標 */
+     transform: scale(var(--f)); /* 根據變數 --f 進行縮放 */
+     transition: 0.5s; /* 設定過渡效果，持續時間為 0.5 秒 */
+     border-radius: 0 0 999px 999px; /* 設定圓角，只對下方兩個角進行圓化 */
+     --o: calc((1 / var(--f) - 1) * var(--s) / 2 - var(--b)); /* 計算變數 --o 的值 */
+     outline: var(--b) solid var(--c); /* 設定外邊框樣式，顏色和寬度由變數 --b 和 --c 決定 */
+     outline-offset: var(--o); /* 設定外邊框的偏移量 */
+     --g: 50% / calc(100% / var(--f)) 100% no-repeat content-box; /* 計算背景樣式的變數 --g */
+     background: radial-gradient( /* 設定背景為放射狀漸變 */
+         circle closest-side,
+         var(--bg) calc(99% - var(--b)), /* 背景顏色由變數 --bg 決定 */
+         var(--c) calc(100% - var(--b)) 99%, /* 漸變顏色由變數 --c 決定 */
+         #0000 /* 透明顏色 */
+       )
+       var(--g); /* 使用變數 --g 設定背景重複方式 */
+     -webkit-mask: linear-gradient(#000 0 0) no-repeat 50% calc(1px - var(--o)) / /* 設定 WebKit 瀏覽器的遮罩 */
+         calc(100% / var(--f) - 2 * var(--b) - 2px) 50%,
+       radial-gradient(circle closest-side, #000 99%, #0000) var(--g); /* 使用圓形漸變作為遮罩 */
+     mask: linear-gradient(#000 0 0) no-repeat 50% calc(1px - var(--o)) / /* 設定其他瀏覽器的遮罩 */
+         calc(100% / var(--f) - 2 * var(--b) - 2px) 50%,
+       radial-gradient(circle closest-side, #000 99%, #0000) var(--g); /* 使用圓形漸變作為遮罩 */
+}
+
+  img:hover {
+    /* 缩放比例 */
+    --f: 1.35;
+  }
+
+  p{
+    align-items: center;
+    justify-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #fff;
+    
+  }
+footer {
+    padding-top: 100px;
+    background-image: url(/image/bbg.jpg);
+    background-color: rgba(0, 0, 0, .6); /* 黑色遮罩 */
+    background-blend-mode: multiply; /* 背景混合模式 */
+    background-size: cover; /* 背景圖片覆蓋 */
+    background-position: center; /* 置中 */
+    background-repeat: no-repeat; /* 不重複背景 */
+    background-attachment: fixed; /* 固定背景 */
+    background-size: 100% 100%; /* 背景圖片填滿容器 */
+    text-align: center; /* 文字置中 */
+}
+
+p2{
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.1ch; /* 字元間距 */
+    font-family:'Times New Roman', Times, serif;
+    opacity: 80%; /* 設定透明度為 80% */
+}

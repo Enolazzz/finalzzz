@@ -3,10 +3,10 @@
 
 var express = require("express");
 var server = express();
-var bodyParser = require("n");
-
+var bodyParser = require("body-parser");
+var path = require("path");
 //web root
-server.use(express.static(__dirname+"/Enolazzz"));
+server.use(express.static(__dirname+'/final'));
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded());
 
@@ -82,7 +82,7 @@ server.get("/img", (req, res)=>{
     res.send(Services)
 });
 
-server.get("/Enolazzz", (req,res)=>{
+server.get("/final", (req,res)=>{
     DB
     kr1DB.find({}).then(results=>{
        if(results != null){
@@ -106,3 +106,7 @@ server.get("/Enolazzz", (req,res)=>{
 server.listen(90, ()=>{
     console.log("Server is running at port 90."); /* 90通道 */
 })
+
+server.get('/',(req,res)=>{
+  res.sendFile(path.join(__dirname,'/final/intex.html'))
+});
