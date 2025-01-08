@@ -8,6 +8,7 @@ var myService = createApp({
             ]
         }
     }
+    
 }).mount("#img");
 
 
