@@ -14,57 +14,57 @@ server.use(bodyParser.urlencoded());
 var DB = require("nedb-promises");
 var kr1DB = DB.create(__dirname+"/kr1.db");
 
-kr1DB.insert({ 
-    id: 1, 
-    type: 'section1', 
-    name: 'section1', 
-    img: 'image/1/IMG_0921.jpg', 
-    text: '2024.06.29',
-});
-
-kr1DB.insert({ 
-  id: 2, 
-  type: 'section2', 
-  name: 'section2', 
-  img: 'image/2/IMG_7936.JPG', 
-  text: '2024.06.29' 
-});
-
-kr1DB.insert({ 
-   id: 3, 
-   type: 'section3', 
-   name: 'section3', 
-   img: 'image/1/IMG_8478.JPG', 
-   text: '2024.06.29' 
- });
-kr1DB.insert({ 
-  id: 4, 
-  type: 'section4', 
-  name: 'section4', 
-  img: 'image/1/IMG_4529.jpg', 
-  text: '2024.06.29' 
-});
-kr1DB.insert({ 
-  id: 5, 
-  type: 'section5', 
-  name: 'section5', 
-  img: 'image/1/IMG_4910.jpg', 
-  text: '2024.06.29' 
-});
-kr1DB.insert({ 
-  id: 6, 
-  type: 'section6', 
-  name: 'section6', 
-  img: 'image/1/IMG_5206.jpg', 
-  text: '2024.06.29' 
-});
-kr1DB.insert({ 
-  id: 7, 
-  type: 'section7', 
-  name: 'section7', 
-  img: 'image/1/IMG_5894.jpg', 
-  text: '2024.06.29' 
-});
+//kr1DB.insert({ 
+//    id: 1, 
+//    type: 'section1', 
+//    name: 'section1', 
+//    img: 'image/1/IMG_0921.jpg', 
+//    text: '2024.06.29',
+//});
+//
+//kr1DB.insert({ 
+//  id: 2, 
+//  type: 'section2', 
+//  name: 'section2', 
+//  img: 'image/2/IMG_7936.JPG', 
+//  text: '2024.06.29' 
+//});
+//
+//kr1DB.insert({ 
+//   id: 3, 
+//   type: 'section3', 
+//   name: 'section3', 
+//   img: 'image/1/IMG_8478.JPG', 
+//   text: '2024.06.29' 
+// });
+//kr1DB.insert({ 
+//  id: 4, 
+//  type: 'section4', 
+//  name: 'section4', 
+//  img: 'image/1/IMG_4529.jpg', 
+//  text: '2024.06.29' 
+//});
+//kr1DB.insert({ 
+//  id: 5, 
+//  type: 'section5', 
+//  name: 'section5', 
+//  img: 'image/1/IMG_4910.jpg', 
+//  text: '2024.06.29' 
+//});
+//kr1DB.insert({ 
+//  id: 6, 
+//  type: 'section6', 
+//  name: 'section6', 
+//  img: 'image/1/IMG_5206.jpg', 
+//  text: '2024.06.29' 
+//});
+//kr1DB.insert({ 
+//  id: 7, 
+//  type: 'section7', 
+//  name: 'section7', 
+//  img: 'image/1/IMG_5894.jpg', 
+//  text: '2024.06.29' 
+//});
 
 server.get("/img", (req, res)=>{
     DB
