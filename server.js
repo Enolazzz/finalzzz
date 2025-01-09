@@ -84,7 +84,7 @@ server.get("/img", (req, res)=>{
 
 server.get("/final", (req,res)=>{
     DB
-    kr1DB.find({}).then(results=>{
+    kr1DB.find({}).sort({id:1}).then(results=>{
        if(results != null){
             res.send(results);
        }else{

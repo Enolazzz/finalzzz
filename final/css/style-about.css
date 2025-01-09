@@ -134,36 +134,36 @@ main{
   }
 
   img {
-     box-sizing: content-box; /* 設定盒子模型為 content-box，讓padding不影響寬度 */
-     width: var(--s); /* 設定圖片寬度為變數 --s 的值 */
-     aspect-ratio: 1; /* 設定圖片的寬高比為 1:1，保持正方形 */
-     object-fit: contain; /* 使圖片在容器內保持比例，並且完整顯示 */
-     padding-top: calc(var(--s) / 5); /* 計算上內邊距為 --s 的五分之一 */
-     cursor: pointer; /* 當滑鼠懸停時，顯示為可點擊的手型光標 */
-     transform: scale(var(--f)); /* 根據變數 --f 進行縮放 */
-     transition: 0.5s; /* 設定過渡效果，持續時間為 0.5 秒 */
-     border-radius: 0 0 999px 999px; /* 設定圓角，只對下方兩個角進行圓化 */
+     box-sizing: content-box; /* 讓padding不影響寬度 */
+     width: var(--s); /* 圖片寬度設定的圖片大小 */
+     aspect-ratio: 1; /* 設定圖片的寬高比為 1:1*/
+     object-fit: contain; /* 圖片保持比例*/
+     padding-top: calc(var(--s) / 5); /* 上內邊距為 圖片大小 的五分之一 */
+     cursor: pointer; /* 滑鼠停在大頭貼上時，顯示為可點擊 */
+     transform: scale(var(--f)); /* 根據初始比例縮放 */
+     transition: 0.5s; /* 大頭貼比例縮放的過渡效果 */
+     border-radius: 0 0 999px 999px; /* 下兩個角圓角 */
      --o: calc((1 / var(--f) - 1) * var(--s) / 2 - var(--b)); /* 計算變數 --o 的值 */
-     outline: var(--b) solid var(--c); /* 設定外邊框樣式，顏色和寬度由變數 --b 和 --c 決定 */
+     outline: var(--b) solid var(--c); /* 外邊框樣式，顏色和寬度由變數 --b 和 --c 決定 */
      outline-offset: var(--o); /* 設定外邊框的偏移量 */
      --g: 50% / calc(100% / var(--f)) 100% no-repeat content-box; /* 計算背景樣式的變數 --g */
      background: radial-gradient( /* 設定背景為放射狀漸變 */
          circle closest-side,
-         var(--bg) calc(99% - var(--b)), /* 背景顏色由變數 --bg 決定 */
-         var(--c) calc(100% - var(--b)) 99%, /* 漸變顏色由變數 --c 決定 */
-         #0000 /* 透明顏色 */
+         var(--bg) calc(99% - var(--b)), /* 背景顏色背景顏色決定 */
+         var(--c) calc(100% - var(--b)) 99%, /* 漸變顏色由邊框顏色決定 */
+         #0000 
        )
-       var(--g); /* 使用變數 --g 設定背景重複方式 */
-     -webkit-mask: linear-gradient(#000 0 0) no-repeat 50% calc(1px - var(--o)) / /* 設定 WebKit 瀏覽器的遮罩 */
+       var(--g); /*設定圖片下方半圓形顏色遮罩 */
+     -webkit-mask: linear-gradient(#000 0 0) no-repeat 50% calc(1px - var(--o)) / /*  WebKit遮罩 遮住最下方產生藍色遮罩 */
          calc(100% / var(--f) - 2 * var(--b) - 2px) 50%,
-       radial-gradient(circle closest-side, #000 99%, #0000) var(--g); /* 使用圓形漸變作為遮罩 */
-     mask: linear-gradient(#000 0 0) no-repeat 50% calc(1px - var(--o)) / /* 設定其他瀏覽器的遮罩 */
+       radial-gradient(circle closest-side, #000 99%, #0000) var(--g); /* 圓形的漸變 */
+     mask: linear-gradient(#000 0 0) no-repeat 50% calc(1px - var(--o)) / /* 一般遮罩 */
          calc(100% / var(--f) - 2 * var(--b) - 2px) 50%,
-       radial-gradient(circle closest-side, #000 99%, #0000) var(--g); /* 使用圓形漸變作為遮罩 */
+       radial-gradient(circle closest-side, #000 99%, #0000) var(--g); /* 同樣使用圓形漸變作 */
 }
 
   img:hover {
-    /* 缩放比例 */
+    /* 缩放比例 依照初始比例放大 */
     --f: 1.35;
   }
 
