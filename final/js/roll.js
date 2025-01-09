@@ -1,30 +1,31 @@
-// 等待 DOM 完全加載後再執行 (讀完 HTML 後馬上觸發)
+// 等待 DOM 完全加載後執行
 window.addEventListener('DOMContentLoaded', function() {
-
-    // 選擇所有圖片
+    // 選擇所有的作品集圖片
     const images = document.querySelectorAll('.box img');
 
-    // 圖片開始樣式 從左滑入 淡入進場
+    // 為每張圖片設置初始樣式（圖片從左側滑入）
     gsap.set(images, {
-        x: '-300%', //從左邊滑入
+        x: '-300%',
         opacity: 0,
     });
 
     // 為每張圖片設置依序滾動觸發動畫效果，並確保滾動回到時同樣觸發
     images.forEach((img, index) => {
         gsap.to(img, {
-            x: '0%', // 圖片回到原位
-            opacity: 1, // 淡入後顯示圖片
-            duration: 3, // 持續時間
-            ease: 'power5.out', // 平滑效果
+            x: '0%', // 圖片滑入至原位
+            opacity: 1, // 顯示圖片
+            duration: 3, // 動畫持續時間
+            ease: 'power5.out', // 平滑過渡
             
             scrollTrigger: {
-                trigger: img, // 每張圖片會獨立觸發
-                start: "center center", // 滑到圖片中央時會觸發
-                end: "bottom center", //滑到圖片底部結束
-              
+                trigger: img, // 每張獨立觸發動畫
+                start:"top center",
+                end: () => "+=" +
+
+        document.querySelector("img").offsetWidth,
+                toggleActions: "restart pause reverse pause" // 確保滾動回到時動畫反向執行
             },
-            delay: index * 0.6, // 每張圖片依序觸發
+            delay: index * 0.6, // 每張圖片延遲依序觸發
         });
     });
 });
