@@ -19,8 +19,8 @@ window.addEventListener('DOMContentLoaded', function() {
             
             scrollTrigger: {
                 trigger: img, // 每張獨立觸發動畫
-                start:"top center",
-                eend: "bottom 60%", // 圖片底部到螢幕 60% 高度時結束
+                start:"center center",
+                eend: "bottom bottom", // 圖片底部到螢幕 60% 高度時結束
                 scrub: true, // 平滑滾動動畫效果
             },
             delay: index * 0.6, // 每張圖片延遲依序觸發
