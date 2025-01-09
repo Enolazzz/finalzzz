@@ -15,16 +15,16 @@ window.addEventListener('DOMContentLoaded', function() {
         gsap.to(img, {
             x: '0%', // 圖片回到原位
             opacity: 1, // 淡入後顯示圖片
-            duration: 2, // 持續時間
+            duration: 3, // 持續時間
             ease: 'power5.out', // 平滑效果
             
             scrollTrigger: {
                 trigger: img, // 每張圖片會獨立觸發
                 start: "center center", // 滑到圖片中央時會觸發
                 end: "bottom center", //滑到圖片底部結束
-                scrub: true, // 平滑滾動效果
+              
             },
-            delay: index * 2 // 每張圖片依序觸發
+            delay: index * 0.6, // 每張圖片依序觸發
         });
     });
 });
