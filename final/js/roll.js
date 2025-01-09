@@ -1,29 +1,68 @@
-// 等待 DOM 完全加載後執行
-window.addEventListener('DOMContentLoaded', function() {
-    // 選擇所有的作品集圖片
-    const images = document.querySelectorAll('.box img');
-
-    // 為每張圖片設置初始樣式（圖片從左側滑入）
-    gsap.set(images, {
-        x: '-300%',
-        opacity: 0,
+document.addEventListener("DOMContentLoaded", function () {
+    gsap.registerPlugin(ScrollTrigger);
+  
+    // 要把此段滾動視差運用到作品集container的元素col
+    const container = document.querySelector(".container");
+    const elements = container.querySelectorAll(".col");
+  
+    //找到每個col 設定滾動視差(elem=元素)
+    elements.forEach(function (elem) {
+      hide(elem); //滾動前先隱藏col元素
+  
+      //建立滾動視差
+      ScrollTrigger.create({
+        trigger: elem,//滾動觸發在col元素
+        start: "top bottom",//col在開頭就觸發滾動視差
+        end: "bottom top",//col的尾端 在離開網頁視窗的開頭結束
+        onEnter: function () {
+          animateFrom(elem);//進入work頁面就產生效果
+        },
+        onEnterBack: function () {
+          animateFrom(elem, -1);//視差滾動產生效果
+        },
+        onLeave: function () {
+          hide(elem);//關閉頁面
+        },
+      });
     });
+  });
 
-    // 為每張圖片設置依序滾動觸發動畫效果，並確保滾動回到時同樣觸發
-    images.forEach((img, index) => {
-        gsap.to(img, {
-            x: '0%', // 圖片滑入至原位
-            opacity: 1, // 顯示圖片
-            duration: 3, // 動畫持續時間
-            ease: 'power5.out', // 平滑過渡
-            
-            scrollTrigger: {
-                trigger: img, // 每張獨立觸發動畫
-                start:"center center",
-                eend: "bottom bottom", // 圖片底部到螢幕 60% 高度時結束
-                scrub: true, // 平滑滾動動畫效果
-            },
-            delay: index * 0.6, // 每張圖片延遲依序觸發
-        });
-    });
-});
+  //元素方向
+  function animateFrom(elem, direction) {
+    direction = direction || 1;
+    var x = 0,
+      y = direction * 100,  //初始y
+      delay = 0;
+
+   // 設定滾動視差滾動時的位移方向
+    if (elem.classList.contains("fromLeft")) {
+      x = -100;
+      y = 0;
+    } else if (elem.classList.contains("fromRight")) {
+      x = 100;
+      y = 0;
+    }
+
+    //元素初始的位置跟透明度
+    elem.style.transform = "translate(" + x + "px, " + y + "px)";
+    elem.style.opacity = "0";
+  
+    gsap.fromTo(
+      elem,
+      { x: x, y: y, autoAlpha: 0 },
+      {
+        duration: 1.25,
+        x: 0,
+        y: 0,
+        autoAlpha: 1, //滾動後的透明度
+        ease: "expo",//緩動
+        overwrite: "auto",
+        delay: delay,
+      }
+    );
+  }
+  
+  function hide(elem) {
+    gsap.set(elem, { autoAlpha: 0 });//隱藏col狀態
+  }
+  
