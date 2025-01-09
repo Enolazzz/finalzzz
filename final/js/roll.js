@@ -20,11 +20,8 @@ window.addEventListener('DOMContentLoaded', function() {
             scrollTrigger: {
                 trigger: img, // 每張獨立觸發動畫
                 start:"top center",
-                end: () => "+=" +
-
-        document.querySelector("img").offsetWidth,
-                markers: true,
-                toggleActions: "restart pause reverse pause" // 確保滾動回到時動畫反向執行
+                eend: "bottom 60%", // 圖片底部到螢幕 60% 高度時結束
+                scrub: true, // 平滑滾動動畫效果
             },
             delay: index * 0.6, // 每張圖片延遲依序觸發
         });
