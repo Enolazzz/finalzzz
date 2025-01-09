@@ -23,6 +23,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 end: () => "+=" +
 
         document.querySelector("img").offsetWidth,
+                markers: true,
                 toggleActions: "restart pause reverse pause" // 確保滾動回到時動畫反向執行
             },
             delay: index * 0.6, // 每張圖片延遲依序觸發
